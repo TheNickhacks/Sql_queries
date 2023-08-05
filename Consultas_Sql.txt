@@ -1,0 +1,32 @@
+Laboratorio Evaluado 1, Bases de Datos
+Nicolás Navarro Garrido 
+Id: 21193272
+
+1) 
+Select title, film_id
+from film
+where description LIKE'%Robot%'
+
+2)
+select *
+from film
+where language_id =5
+
+3)
+select * 
+from film
+inner join film_category using (film_id) where category_id=15
+
+4)
+select *
+from city
+where city LIKE'%Batman%'
+
+5)
+Select inventory.inventory_id, staff.staff_id, staff.first_name, staff.last_name, film.film_id, film.title
+From film
+inner join inventory using(film_id)
+inner join rental using(inventory_id)
+inner join payment on payment.rental_id = rental.rental_id
+inner join staff on staff.staff_id = payment.staff_id
+where staff.last_name='Hillyer'and staff.first_name='Mike' 
