@@ -1,7 +1,3 @@
-Laboratorio Evaluado 1, Bases de Datos
-Nicolás Navarro Garrido 
-Id: 21193272
-
 1) 
 Select title, film_id
 from film
