@@ -1,0 +1,52 @@
+/* Creación de la BBDD como muestra de prototipo para verificar el trabajo */
+CREATE DATABASE Prototipo_U;
+
+/* Utilizacion de la BBDD para crear las tablas y campos correspondientes */
+USE Prototipo_U;
+
+/* Creacion de la tabla sucursal, con su id respectivo automatico */
+CREATE TABLE Sucursal (
+    ID_Sucursal AUTOINCREMENT PRIMARY KEY,
+    Direccion VARCHAR(50),
+    Comuna VARCHAR(50)
+);
+
+/* Ingreso de datos de personal */
+/* Validar el la ID_Sucursal en el programa a traves de una consulta con la direccion del local (Usar un if con una query) */
+CREATE TABLE Personal (
+    Rut_Personal INT PRIMARY KEY,
+    ID_Sucursal INT,
+    FOREIGN KEY (ID_Sucursal) REFERENCES Sucursal(ID_Sucursal)
+);
+
+/* Paciente, con sus respectivos datos, el ID_Paciente debe de ser global para todo usuario */
+CREATE TABLE Paciente (
+    ID_Paciente  AUTOINCREMENT,
+    Rut_Paciente INT PRIMARY KEY,
+    Direccion VARCHAR(50),
+    Comuna VARCHAR(50),
+    Ciudad VARCHAR(50),
+    Email VARCHAR(25),
+    Telefono VARCHAR(9),
+    Edad VARCHAR(2),
+    Genero INT
+);
+
+/* Tabla Receta, relacionada directamente al rut del paciente, este puede tener mas de una receta y es totalmente valido */
+/* Se valida la direccion de ingreso a traves del Rut del personal, de esta forma se ve que la ingreso en el local x */
+CREATE TABLE Receta (
+    ID_Receta  AUTOINCREMENT PRIMARY KEY,
+    Rut_Personal INT,
+    FOREIGN KEY (Rut_Personall) REFERENCES Personal(Rut_Pesonal),
+    Rut_Paciente INT,
+    FOREIGN KEY (Rut_Pacientel) REFERENCES Paciente(ID_Paciente),
+    Fecha_Ingreso DATE,
+    Tipo_Lentes VARCHAR(10),
+    Od_Esfera VARCHAR(10),
+    Cilindro_Cero VARCHAR(5),
+    Grado_Cero VARCHAR(5),
+    Cilindro_Uno VARCHAR(5),
+    Grado_Uno VARCHAR(5),
+    Especificaciones VARCHAR(30),
+    Descripcion_Breve VARCHAR(30)
+);
